@@ -12,7 +12,7 @@ This project offers both a TypeScript server (Node.js and Express) and a Python 
 1. Clone the repository or download the source code.
 
 ```bash
-git clone [https://github.com/your-repo-url/perplexity-query-api](https://github.com/Arbaaz-Mahmood/Perplexity-API.git)
+git clone https://github.com/Arbaaz-Mahmood/Perplexity-API.git
 ```
 
 2. Navigate to the project directory.
