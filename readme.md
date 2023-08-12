@@ -1,13 +1,13 @@
 # Perplexity Query API
 
-This project is a simple server that runs on Node.js and uses Express to create an HTTP API for querying the [perplexity.ai](https://perplexity.ai) website. It uses Puppeteer for browser automation to interact with the website and fetch answers to user's questions. The server exposes a `/query` endpoint that accepts JSON POST requests with a `prompt` field.
+This project offers both a TypeScript server (Node.js and Express) and a Python script to query the [perplexity.ai](https://perplexity.ai) website and fetch answers to user's questions. Both implementations use browser automation: the TypeScript server uses Puppeteer, while the Python script uses Selenium.
 
 ## Prerequisites
 
-- Node.js (v14.0.0 or higher)
-- npm (v6.14.0 or higher)
+- Node.js (v14.0.0 or higher) and npm (v6.14.0 or higher) for TypeScript server
+- Python (3.6 or higher) for Python script
 
-## Installation
+## TypeScript Server Installation and Usage
 
 1. Clone the repository or download the source code.
 
@@ -27,25 +27,42 @@ cd perplexity-query-api
 npm install
 ```
 
-## Usage
-
-1. Run the server using `ts-node`:
+4. Run the server using `ts-node`:
 
 ```bash
 npx ts-node app.ts
 ```
 
-The server will start at `http://localhost:3000` by default.
+The server will start at `http://localhost:3000` by default. Users can send a POST request to the `/query` endpoint with a JSON payload that includes a `prompt` field.
 
-2. Send a POST request to the `/query` endpoint with a JSON payload that includes a `prompt` field. For example:
+## Python Script Installation and Usage
+
+1. Install the required Python packages:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{ "prompt": "What is the capital of France?" }' http://localhost:3000/query
+pip install selenium beautifulsoup4 webdriver-manager
 ```
 
-Alternatively, you can use tools like [Postman](https://www.postman.com/) or create a simple HTML form to interact with the `/query` endpoint.
+2. Install ChromeDriver:
 
-3. The server will respond with a JSON object containing the status, status text, and the fetched content (answer) from perplexity.ai.
+- **macOS**:
+  - You can use Homebrew to install ChromeDriver: `brew install chromedriver`
+  - Make sure the installed ChromeDriver is in your `PATH` environment variable.
+- **Windows**:
+  - Download ChromeDriver from the [official site](https://sites.google.com/a/chromium.org/chromedriver/downloads).
+  - Extract the executable and add the folder containing the executable to your `PATH` environment variable.
+- **Linux**:
+  - Use the package manager for your distribution to install ChromeDriver.
+  - For example, on Ubuntu-based systems: `sudo apt-get install chromium-chromedriver`
+  - Make sure the installed ChromeDriver is in your `PATH` environment variable.
+
+3. Run the `perplexity_query.py` script:
+
+```bash
+python perplexity_query.py
+```
+
+The Python script will prompt for a question, interact with the perplexity.ai website, and print the response to the console.
 
 ## License
 
